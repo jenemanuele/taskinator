@@ -61,26 +61,23 @@ var createTaskActions = function (taskId) {
   var actionContainerE1 = document.createElement("div");
   actionContainerE1.className = "task-actions";
 
-
   //create edit button
   var editButtonE1 = document.createElement("button");
   editButtonE1.textContent = "Edit";
   editButtonE1.className = "butn edit-btn";
   editButtonE1.setAttribute("data-task-id", taskId);
   actionContainerE1.appendChild(editButtonE1);
-
   //create delete button
   var deleteButtonE1 = document.createElement("button");
   deleteButtonE1.textContent = "Delete";
   deleteButtonE1.className = "btn delete-btn";
   deleteButtonE1.setAttribute("data-task-id", taskId);
-
   actionContainerE1.appendChild(deleteButtonE1);
   //create change status dropdown
   var statusSelectE1 = document.createElement("select");
-  statusSelectE1.className = "select-status";
   statusSelectE1.setAttribute("name", "status-change");
   statusSelectE1.setAttribute("data-task-id", taskId);
+  statusSelectE1.className = "select-status";
   actionContainerE1.appendChild(statusSelectE1);
   //creeate status options
   var statusChoices = ["To Do", "In Progress", "Completed"];
@@ -88,7 +85,7 @@ var createTaskActions = function (taskId) {
   for (var i = 0; i < statusChoices; i++) {
     //create option element
     var statusOptionEl = document.createElement("option");
-    statusOptionEl.setAttributeNS("value", statusChoices[i]);
+    statusOptionEl.setAttribute("value", statusChoices[i]);
     statusOptionE1.textContent = statusChoices[i];
 
     //append to select
@@ -101,6 +98,7 @@ var createTaskActions = function (taskId) {
 var completeEditTask = function (taskName, taskType, taskId) {
   // find task list item with taskId value
   var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+  
   // set new values
   taskSelected.querySelector("h3.task-name").textContent = taskName;
   taskSelected.querySelector("span.task-type").textContent = taskType;
@@ -127,6 +125,7 @@ var taskButtonHandler = function (event) {
     deleteTask(taskId);
   }
 };
+
 var taskStatusChangeHandler = function (event) {
   console.log(event.target.value);
 

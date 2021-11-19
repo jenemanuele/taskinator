@@ -246,9 +246,6 @@ var loadTasks= function() {
   }
 };
 
-
-
-
 // Create a new task
 formEl.addEventListener("submit", taskFormHandler);
 
